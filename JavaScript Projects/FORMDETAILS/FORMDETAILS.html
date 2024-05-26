@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyborgCoding - Day 29 #100DaysOfCode</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      background-color: gray;
+    }
+
+    h1 {
+      margin-left: 10px;
+    }
+
+    #text,
+    #email,
+    #password,
+    button {
+      display: grid;
+      color: black;
+      background-color: white;
+      text-align: center;
+      border: 1px solid black;
+      padding: 5px;
+      margin: 7px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    button {
+      background-color: blue;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <h1>Form Data</h1>
+    <form>
+      <input type="text" name="text" id="text" placeholder="Username" />
+      <input type="email" name="email" id="email" placeholder="Email@.com" />
+      <input type="password" name="password" id="password" placeholder="Password" />
+      <button id="btn">Submit</button>
+      <hr />
+      <br>
+    </form>
+  </div>
+  <script>
+    let container = document.getElementById("container");
+    let username = document.getElementById("text");
+    let email = document.getElementById("email");
+    let password = document.getElementById("password");
+    let btn = document.getElementById("btn");
+
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      let p = document.createElement("p");
+      p.setAttribute("id", "para");
+      p.setAttribute("style", "color: white");
+      p.innerText = `Entered values for Username: ${username.value}, Email:  ${email.value} and Password: ${password.value}`;
+
+      console.log(
+        `Entered values for Username: ${username.value}, Email:  ${email.value} and Password: ${password.value}`
+      );
+
+      container.appendChild(p);
+    });
+  </script>
+</body>
+
+</html>

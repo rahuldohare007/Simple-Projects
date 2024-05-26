@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyborgCoding - Day 33 #100DaysOfCode (Table Creation)</title>
+  <style>
+    body {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .odd {
+      background-color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <!-- <input type="number" placeholder="Row"> -->
+    <h1 class="heading">Table Creation</h1>
+    <script>
+      let container = document.getElementById("container");
+
+      //ROW
+      let ROW = document.createElement("input");
+      ROW.setAttribute("id", "row");
+      ROW.setAttribute("type", "number");
+      ROW.setAttribute("min", "1");
+      ROW.setAttribute("placeholder", "Row");
+      ROW.setAttribute("style", "margin-right:5px");
+
+      //COLUMN
+      let COLUMN = document.createElement("input");
+      COLUMN.setAttribute("id", "column");
+      COLUMN.setAttribute("type", "number");
+      COLUMN.setAttribute("min", "1");
+      COLUMN.setAttribute("placeholder", "Column");
+      COLUMN.setAttribute("style", "margin-right:5px");
+
+      //CREATE
+      let btn = document.createElement("button");
+      btn.setAttribute("type", "button");
+      btn.setAttribute("onclick", "submitForm()");
+      btn.innerText = "Create";
+      btn.setAttribute("style", "margin-right:5px");
+
+      container.appendChild(ROW);
+      container.appendChild(COLUMN);
+      container.appendChild(btn);
+
+      function submitForm() {
+        let rowInput = document.getElementById("row").value;
+        let columnInput = document.getElementById("column").value;
+
+        console.log("Rows:", rowInput);
+        console.log("Columns:", columnInput);
+
+        let table = document.createElement("table");
+
+        if (rowInput == 0 && columnInput == 0) {
+          return;
+        }
+
+        for (let i = 1; i <= rowInput; i++) {
+          // Create data rows
+          let tr = document.createElement("tr");
+
+          // Create data cells
+          let td = document.createElement("td");
+          // td.textContent = "Row:" + i;
+          td.innerText = "Row:" + i;
+
+          // tr.appendChild(td);
+          if (i % 2 != 0) {
+            tr.style.backgroundColor = "red";
+          } else {
+            // tr.classList.add("odd");
+            tr.style.backgroundColor = "blue";
+          }
+
+          tr.appendChild(td);
+
+          for (let j = 1; j < columnInput; j++) {
+            let td = document.createElement("td");
+            // td.textContent = "Column:" + (j + 1);
+            td.innerText = "Column:" + (j + 1);
+
+            tr.appendChild(td);
+          }
+
+          // Append the table to the body of the table
+          table.appendChild(tr);
+        }
+        table.setAttribute('border', '1')
+        table.setAttribute('style', 'border-collapse:collapse')
+        table.setAttribute('cellpadding', '10')
+        container.appendChild(table);
+      }
+    </script>
+  </div>
+</body>
+
+</html>

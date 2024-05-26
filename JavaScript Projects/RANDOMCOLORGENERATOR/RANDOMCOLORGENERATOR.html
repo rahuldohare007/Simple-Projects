@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyborgCoding - Day 31 #100DaysOfCode (COLOR GENERATOR)</title>
+  <style>
+    * {
+      margin: 0;
+      background-color: black;
+    }
+
+    #container {
+      height: 100vh;
+    }
+
+    #input {
+      padding: 10px 20px;
+      margin-top: 650px;
+      margin-left: 700px;
+      background-color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <input type="text" name="input" id="input" placeholder="Enter Something" onkeypress="colorGenerator()" />
+  </div>
+  <script>
+    let container = document.getElementById("container");
+
+    function colorGenerator() {
+      const color = changeColor();
+      container.style.backgroundColor = color;
+    }
+
+    function changeColor() {
+      const letters = "0123456789ABCDEF";
+      let color = "#";
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+  </script>
+</body>
+
+</html>

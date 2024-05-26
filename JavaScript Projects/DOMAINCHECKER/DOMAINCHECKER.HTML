@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyborgCoding - Day 30 #100DaysOfCode (Domain Checker)</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  #container {
+    text-align: center;
+    padding: 10px;
+    background-color: yellowgreen;
+  }
+
+  #text {
+    margin-right: 5px;
+    height: 25px;
+  }
+
+  #btn {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 6px;
+  }
+</style>
+
+<body>
+  <div id="container">
+    <h1>DOMAIN CHECKER</h1>
+    <input type="text" name="text" id="text" placeholder="Enter your text" />
+    <button id="btn">Check</button>
+    <h1 id="show">HI BUDDY!!!</h1>
+  </div>
+  <script>
+    let btn = document.getElementById("btn");
+    let text = document.getElementById("text");
+    let show = document.getElementById("show");
+    let gArr = [];
+
+    btn.addEventListener("click", (e) => {
+      e.preventDefault;
+
+      if (!text.value) {
+        alert("Enter text first");
+      } else {
+        let present = gArr.some((item) => {
+          return item === text.value
+        })
+        if (present) {
+          show.innerText = `${text.value} already present!`
+          console.log('Present')
+        }
+        else {
+          show.innerText = ""
+          gArr.push(text.value);
+        }
+      }
+      console.log(text.value);
+      console.log(gArr);
+      // show.innerText = text.value;
+      text.value = "";
+
+    });
+
+  </script>
+</body>
+
+</html>

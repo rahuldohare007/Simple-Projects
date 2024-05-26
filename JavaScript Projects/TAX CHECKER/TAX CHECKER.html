@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyborgCoding - Day 32 #100DaysOfCode (TAX)</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      background-color: brown;
+      text-align: center;
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .rupee {
+      font-size: 35px;
+    }
+
+    input {
+      background-color: white;
+      margin-top: 2px;
+    }
+
+    button {
+      background-color: yellowgreen;
+      border: none;
+      padding: 5px;
+      border: 1px solid black;
+    }
+
+    hr {
+      margin-top: 5px;
+    }
+
+    #pay {
+      margin: 7px;
+      text-align: center;
+    }
+
+    #table {
+      border: 1;
+      border-collapse: collapse;
+      background-color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 id="rupee">&#8377 TAX CHECKER</h1>
+    <input type="number" name="number" id="number" />
+    <button id="btn">Check</button>
+    <hr>
+    <p id="pay">You have to pay &#8377 <u id="values">0</u> amount</p>
+    <hr>
+    <h1 id="Rules">
+      Rules
+    </h1>
+    <p id="rulesdetails"><b>
+        1. 1,00,000 &gt; 10% <br>
+        2. 1 lack - 5 lack 20% <br>
+        3. 5 lack - 10 lack 30% <br>
+        4. &gt;10 lack 40%
+      </b>
+    </p>
+  </div>
+  <script>
+    let container = document.getElementById('container')
+    let number = document.getElementById('number')
+    let values = document.getElementById('values')
+    let btn = document.getElementById('btn')
+
+    btn.addEventListener('click', (e) => {
+      let number1 = number.value;
+
+      if (number1 == 0) {
+        return;
+      }
+
+      if (number1 < 100000) {
+        number1 *= 0.1
+      }
+
+      else if (number1 >= 100000 && number1 <= 500000) {
+        number1 *= 0.2
+      }
+
+      else if (number1 > 500000 && number1 <= 1000000) {
+        number1 *= 0.3
+      }
+
+      else if (number1 > 1000000) {
+        number1 *= 0.4
+      }
+
+      values.textContent = number1;
+      console.log(number1)
+    })
+  </script>
+</body>
+
+</html>
